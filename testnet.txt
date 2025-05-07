@@ -1,0 +1,42 @@
+ResourceId: 0x0000000000000000000000cAce132397462f480726C0CE98fEbfFd1CDA908B00
+
+------------------------------------------------------------------
+Deploy Bridge + ERC20 Handler
+------------------------------------------------------------------
+cb-sol-cli deploy --chainId 1 --url https://data-seed-prebsc-1-s2.bnbchain.org:8545 --bridge --gasLimit 8000000 --gasPrice 50000000000
+cb-sol-cli deploy --chainId 1 --url https://data-seed-prebsc-1-s2.bnbchain.org:8545 --erc20Handler --bridgeAddress 0x3182e507A18F212FED16349bEd166229504655f1 --gasLimit 8000000 --gasPrice 50000000000
+cb-sol-cli bridge generate-resource
+cb-sol-cli --url https://data-seed-prebsc-1-s2.bnbchain.org:8545 bridge register-resource --bridge 0x3182e507A18F212FED16349bEd166229504655f1 --handler 0xA5f664c4b7f67315Bb4a2FB9e409e22FaCb377b0 --targetContract 0xC2055E3df9F034729E35cA6291ff264D359CA1D9 --resourceId 0x0000000000000000000000cAce132397462f480726C0CE98fEbfFd1CDA908B00
+cb-sol-cli --url https://data-seed-prebsc-1-s2.bnbchain.org:8545 bridge set-burn --bridge 0x3182e507A18F212FED16349bEd166229504655f1 --handler 0xA5f664c4b7f67315Bb4a2FB9e409e22FaCb377b0 --tokenContract 0xC2055E3df9F034729E35cA6291ff264D359CA1D9
+cb-sol-cli --url https://data-seed-prebsc-1-s2.bnbchain.org:8545 erc20 add-minter --erc20Address 0xC2055E3df9F034729E35cA6291ff264D359CA1D9
+
+cb-sol-cli --url https://data-seed-prebsc-1-s2.bnbchain.org:8545 erc20 add-minter --minter "0x3167776db165D8eA0f51790CA2bbf44Db5105ADF"
+
+
+
+
+
+
+
+
+
+
+
+
+
+cb-sol-cli deploy --chainId 2 --url https://rpc-mumbai.maticvigil.com--bridge --gasLimit 3000000
+cb-sol-cli deploy --chainId 2 --url https://rpc-mumbai.maticvigil.com --erc20Handler  --gasLimit 3000000 --bridgeAddress 0xB17e357d883Cc6E489319df9a3912CeCC561Cc76
+
+------------------------------------------------------------------
+Generate Resource ID
+------------------------------------------------------------------
+
+------------------------------------------------------------------
+Register Resource
+------------------------------------------------------------------
+cb-sol-cli --url https://rpc.ankr.com/bsc/36de70614fd28e2c5dd98d9f113f3aca91a5ffaa2fa563a44027c91331f4f7f5 bridge register-resource --bridge 0xB17e357d883Cc6E489319df9a3912CeCC561Cc76 --handler 0x2402F19994C47aB57cd12761BD0803EFeB076Cd3 --targetContract 0x21E6e8d104950E6481FEA5925562A5Bf65Ac2436 --resourceId 0x0000000000000000000000d682E2f63350a1024389a22fC2719c0626502AFA00
+
+------------------------------------------------------------------
+Setting Token as Mintable and Burnable on Bridge
+------------------------------------------------------------------
+cb-sol-cli --url https://rpctest.spectachain.io --gasPrice 25000000000 bridge set-burn --bridge 0x40Fc80D495d31AEf51C95156655d33aFBE4A9176 --handler 0xE33f49974feAE82C9c85403E113865318B3EF178 --tokenContract 0x761d72ECF13138940F44E3C486c938316023fCDC
